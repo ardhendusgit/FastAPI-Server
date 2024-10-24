@@ -28,7 +28,7 @@ def list_s3_objects(bucket_name: str, prefix: str = None):
 @app.get("/list-bucket-content")
 def get_bucket_root():
     response = s3.list_buckets()
-	return {"Message": response}
+    return {"Message": response}
 
 @app.get("/list-bucket-content/{bucket_name}")
 def get_bucket(bucket_name: str):

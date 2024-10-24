@@ -12,23 +12,32 @@ s3 = boto3.client('s3')
 
 def list_s3_objects(bucket_name: str, prefix: str = None):
     if prefix:
+        # When prefix is provided, list contents within that "directory"
         response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
+        
+        if 'Contents' in response:
+            # Filter to get only the files inside the directory
+            contents = [obj['Key'].split('/')[-1] for obj in response['Contents'] if obj['Key'] != f'{prefix}/']
+            return {"content": contents}
+        else:
+            # Return empty list if no contents found
+            return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"This path does not exist.")
     else:
-        response = s3.list_objects_v2(Bucket=bucket_name)
+        # No prefix means we list top-level "directories"
+        response = s3.list_objects_v2(Bucket=bucket_name, Delimiter='/')
+        
+        if 'CommonPrefixes' in response:
+            # Extract the top-level directories
+            directories = [prefix['Prefix'].rstrip('/') for prefix in response['CommonPrefixes']]
+            return {"content": directories}
+        else:
+            return {"content": []}
 
-    # Extract content and filter out directories
-    if 'Contents' in response:
-        contents = [
-            obj['Key'].split('/')[-1] for obj in response['Contents']
-            if obj['Key'] != prefix and not obj['Key'].endswith('/')
-        ]
-        return {"content": contents}
-    return {"content": []}
 
-@app.get("/list-bucket-content")
-def get_bucket_root():
-    response = s3.list_buckets()
-    return {"Message": response}
+# @app.get("/list-bucket-content")
+# def get_bucket_root():
+#     response = s3.list_buckets()
+#     return {"Message": response}
 
 @app.get("/list-bucket-content/{bucket_name}")
 def get_bucket(bucket_name: str):

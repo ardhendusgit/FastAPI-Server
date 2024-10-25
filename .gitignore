@@ -10,8 +10,12 @@ site
 .coverage*
 coverage.xml
 .netlify
+terraform.tfstate
+.terraform.lock.hcl
+.terraform
 test.db
 log.txt
+test.txt
 Pipfile.lock
 env3.*
 env

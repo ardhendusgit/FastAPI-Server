@@ -6,7 +6,7 @@ variable "instance_name" {
 variable "ami" {
   description = "Amazon machine image to use for ec2 instance"
   type        = string
-  default     = "ami-011899242bb902164" # Ubuntu 20.04 LTS // us-east-1
+  default     = "ami-005fc0f236362e99f" # Ubuntu 20.04 LTS // us-east-1
 }
 
 variable "instance_type" {
@@ -15,10 +15,10 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "security_group_id" {
-  description = "ID of the corresponding security group"
-  type        = string
-}
+# variable "security_group_id" {
+#   description = "ID of the corresponding security group"
+#   type        = string
+# }
 
 variable "key_pair_name" {
   description = "Name of the SSH key pair"

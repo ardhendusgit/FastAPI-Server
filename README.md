@@ -77,24 +77,34 @@ Through the Infrastructure as Code (Terraform) structure, we do the following:
 
 ### Screenshots with references
 
+*Figure 1: Top-level access using IP and Port configuration*
 ![Top-level using IP-PORT](./IP-PORT-toplevel.png)
 
+*Figure 2: Top-level access using HTTPS endpoint*
 ![Top-level using HTTPS](./HTTPS-toplevel.png)
 
+*Figure 3: Invalid path error*
 ![Invalid path-errorcode](./Invalid-path-errorcode-initial.png)
 
+*Figure 4: Non-existing bucket error*
 ![Non-existing-bucket](./Non-existing-bucket.png)
 
+*Figure 5: Non-existing path error*
 ![Non-existing-path](./Non-existing-path.png)
 
+*Figure 6: S3 buckets*
 ![S3-buckets](./S3-buckets.png)
 
+*Figure 7: DNS entries*
 ![DNS-entry](./DNS-entry.png)
 
+*Figure 8: Directory3*
 ![Directory3](./directory3.png)
 
+*Figure 9: Directory2*
 ![Directory2](./directory2.png)
 
+*Figure 10: Directory1*
 ![Directory1](./directory1.png)
 
 ## Limitations

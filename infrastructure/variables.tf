@@ -29,6 +29,6 @@ variable "ZONE" {
   default = "us-east-1a"
 }
 
-variable "role" {
-  description = "Name of the role to be attached to the EC2 instance upon creation"
+variable "instance_profile" {
+  description = "Name of the instance profile to be attached to the EC2 instance upon creation"
 }

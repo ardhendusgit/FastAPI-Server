@@ -16,7 +16,7 @@ resource "aws_instance" "http_instance" {
     Name = var.instance_name
   }
   iam_instance_profile = var.instance_profile
-  user_data = <<-EOF
+  user_data            = <<-EOF
         #!/bin/bash
         sudo apt update -y
         sudo apt install git -y
@@ -39,21 +39,21 @@ resource "aws_security_group_rule" "allow_http_inbound" {
   type              = "ingress"
   security_group_id = aws_security_group.http_server_security_group.id
 
-  from_port   = 8000
-  to_port     = 8000
-  protocol    = "tcp"
+  from_port                = 8000
+  to_port                  = 8000
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.alb.id
 }
 
 resource "aws_security_group_rule" "allow_all_outbound" {
-  type              = "egress" 
+  type              = "egress"
   security_group_id = aws_security_group.http_server_security_group.id
   from_port         = 0
   to_port           = 0
-  protocol          = "-1" 
+  protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
 }
- 
+
 
 resource "aws_security_group" "alb" {
   name = "alb-security-group"

@@ -67,7 +67,7 @@ resource "aws_lb" "load_balancer" {
 
 }
 
-resource "aws_security_group_rule" "allow_alb_http_inbound" {
+resource "aws_security_group_rule" "allow_alb_https_inbound" {
   type              = "ingress"
   security_group_id = aws_security_group.alb.id
 

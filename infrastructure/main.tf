@@ -15,7 +15,7 @@ resource "aws_instance" "http_instance" {
   tags = {
     Name = var.instance_name
   }
-  iam_instance_profile = "arn:aws:iam::654654163308:instance-profile/s3-http-role"
+  iam_instance_profile = var.instance_profile
   user_data = <<-EOF
         #!/bin/bash
         sudo apt update -y

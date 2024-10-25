@@ -25,6 +25,10 @@ variable "key_pair_name" {
   type        = string
 }
 
+variable "certificate_arn" {
+  description = "Amazon arn of issued certificate"
+}
+
 variable "ZONE" {
   default = "us-east-1a"
 }

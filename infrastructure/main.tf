@@ -78,6 +78,17 @@ resource "aws_security_group_rule" "allow_alb_http_inbound" {
 
 }
 
+resource "aws_security_group_rule" "allow_alb_http_inbound" {
+  type              = "ingress"
+  security_group_id = aws_security_group.alb.id
+
+  from_port   = 443
+  to_port     = 443
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
 resource "aws_security_group_rule" "allow_alb_http_outbound" {
   type              = "egress"
   security_group_id = aws_security_group.alb.id
@@ -108,24 +119,27 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-# resource "aws_lb_listener" "https" {
-#   load_balancer_arn = aws_lb.load_balancer.arn
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.load_balancer.arn
 
-#   port = 443
+  port = 443
 
-#   protocol = "HTTPS"
+  protocol = "HTTPS"
 
-#   # By default, return a simple 404 page
-#   default_action {
-#     type = "fixed-response"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+  certificate_arn   = var.certificate_arn 
 
-#     fixed_response {
-#       content_type = "text/plain"
-#       message_body = "404: page not found"
-#       status_code  = 404
-#     }
-#   }
-# }
+  # By default, return a simple 404 page
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "404: page not found"
+      status_code  = 404
+    }
+  }
+}
 
 resource "aws_lb_target_group" "http_server_target_group" {
   name     = "http-server-target-group"

@@ -50,7 +50,7 @@ def get_bucket(bucket_name: str):
     except Exception as e:
         if "(NoSuchBucket)" in str(e):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="The entered bucket doesn't exist.")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"This path does not exist.")
 
 @app.get("/list-bucket-content/{bucket_name}/{prefix}")
 def get_bucket_prefix(bucket_name: str, prefix: str):
@@ -59,4 +59,4 @@ def get_bucket_prefix(bucket_name: str, prefix: str):
     except Exception as e:
         if "(NoSuchBucket)" in str(e):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="The entered bucket doesn't exist.")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"This path does not exist.")

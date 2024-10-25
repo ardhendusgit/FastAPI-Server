@@ -46,6 +46,72 @@ The ideal use case of the service would look like
 ```
 where directory1 and directory2 contain 2 objects each and directory3 is empty.
 
+A sample HTTP response would look like 
+
+```
+{
+        "IsTruncated": false,
+        "Contents": [
+            {
+                "Key": "directory1/",
+                "LastModified": "2024-10-22T20:54:34+00:00",
+                "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+                "Size": 0,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory1/strings2.py",
+                "LastModified": "2024-10-24T17:09:01+00:00",
+                "ETag": "\"83bef0491c12240080b945d9969995a6\"",
+                "Size": 351,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory1/text.txt.bak",
+                "LastModified": "2024-10-24T17:09:02+00:00",
+                "ETag": "\"17fbacb6ccaf6c9873ae16a900a21707\"",
+                "Size": 34,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory2/",
+                "LastModified": "2024-10-22T20:54:42+00:00",
+                "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+                "Size": 0,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory2/Test1.txt",
+                "LastModified": "2024-10-22T20:54:55+00:00",
+                "ETag": "\"08de11f345af16080fc33e6266a17f45\"",
+                "Size": 13,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory2/Test2.txt",
+                "LastModified": "2024-10-22T20:54:56+00:00",
+                "ETag": "\"24db9b34c5652dcb1581fb489ed87010\"",
+                "Size": 18,
+                "StorageClass": "STANDARD"
+            },
+            {
+                "Key": "directory3/",
+                "LastModified": "2024-10-23T20:12:05+00:00",
+                "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+                "Size": 0,
+                "StorageClass": "STANDARD"
+            }
+        ],
+        "Name": "testing-purpose-bucket-ardhendu-1",
+        "Prefix": "",
+        "MaxKeys": 1000,
+        "EncodingType": "url",
+        "KeyCount": 7
+    }
+}
+```
+
+
 ## Required Dependencies
 
 1. A free-tier AWS account

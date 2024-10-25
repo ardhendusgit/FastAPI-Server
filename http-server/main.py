@@ -31,11 +31,9 @@ def list_s3_objects(bucket_name: str, prefix: str = None):
 
 @app.get("/")
 def read_root():
-    # Option 1: Redirect to /list-bucket-content
+    #Redirect to /list-bucket-content
     return RedirectResponse("/list-bucket-content")
 
-    # Option 2: Alternatively, return a custom message
-    # return {"message": "Welcome! Use /list-bucket-content to view S3 bucket contents."}
 
 @app.get("/list-bucket-content")
 def get_bucket_root():

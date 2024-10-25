@@ -129,7 +129,7 @@ resource "aws_lb_listener" "https" {
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = var.certificate_arn 
 
-  # By default, return a simple 404 page
+  # By default, we will return a simple 404 page
   default_action {
     type = "fixed-response"
 

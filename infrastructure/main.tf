@@ -15,7 +15,7 @@ resource "aws_instance" "http_instance" {
   tags = {
     Name = var.instance_name
   }
-  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+  iam_instance_profile = "arn:aws:iam::654654163308:instance-profile/s3-http-role"
   user_data = <<-EOF
         #!/bin/bash
         sudo apt update -y
@@ -29,11 +29,6 @@ resource "aws_instance" "http_instance" {
         cd /home/ubuntu/OnetoN-Assignment/http-server
         uvicorn main:app --host 0.0.0.0 --port 8000
     EOF
-}
-
-resource "aws_iam_instance_profile" "ec2_instance_profile" {
-  name = "s3_role_instance_profile"
-  role = var.role
 }
 
 resource "aws_security_group" "http_server_security_group" {

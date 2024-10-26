@@ -1,4 +1,4 @@
-# HTTP-Server using FlaskAPI
+# HTTP-Server using FastAPI
 
 ## Overview and What it does
 The code exposes an http service in Python and makes usage of FastAPI for schema validation, path parameters and routing. It exposes an endpoint and makes a GET "http://DNS-Endpoint/list-bucket-content/<path>" request. This endpoint returns the content of an S3 bucket path as specified in the request. 

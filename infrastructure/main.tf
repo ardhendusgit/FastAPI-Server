@@ -24,9 +24,9 @@ resource "aws_instance" "http_instance" {
         sudo apt install python3-pip -y
         sudo apt install uvicorn -y
         cd /home/ubuntu
-        git clone https://github.com/ardhendusgit/OnetoN-Assignment.git
-        pip3 install -r /home/ubuntu/OnetoN-Assignment/requirements.txt
-        cd /home/ubuntu/OnetoN-Assignment/http-server
+        git clone https://github.com/ardhendusgit/FastAPI-Server.git
+        pip3 install -r /home/ubuntu/FastAPI-Server/requirements.txt
+        cd /home/ubuntu/FastAPI-Server/http-server
         uvicorn main:app --host 0.0.0.0 --port 8000
     EOF
 }
